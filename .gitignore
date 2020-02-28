@@ -1,0 +1,9 @@
+*.class 
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Other
+persistence.xml
