@@ -23,25 +23,26 @@ public class Address {
 	private String state;
 	@Column(name="zip")
 	private String zip;
-	
+	@Column(name="address_name")
+	private String addressName;
 	
 	public Address() {
-		super();
 	}
 	
-	public Address(String city, String state, String zip) {
+	public Address(String city, String state, String zip, String addressName) {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+		this.addressName = addressName;
 
 	}
 	
-	
-	public Address(int addressId, String city, String state, String zip) {
+	public Address(int addressId, String city, String state, String zip, String addressName) {
 		this.addressId = addressId;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+		this.addressName = addressName;
 	}
 
 	public int getAddressId() {
@@ -76,9 +77,18 @@ public class Address {
 		this.zip = zip;
 	}
 
+	public String getAddressName() {
+		return addressName;
+	}
+
+	public void setAddressName(String addressName) {
+		this.addressName = addressName;
+	}
 
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", city=" + city + ", state=" + state + ", zip=" + zip +"]";
+		return "Address [addressId=" + addressId + ", city=" + city + ", state=" + state + ", zip=" + zip
+				+ ", addressName=" + addressName + "]";
 	}
+
 }
