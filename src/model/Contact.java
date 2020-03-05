@@ -25,13 +25,22 @@ public class Contact {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="address_book_id")
-	private AddressBook addressBook;
-	@OneToMany(mappedBy="contact",cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	
+	
+	@OneToMany(
+		cascade=CascadeType.MERGE,
+		orphanRemoval = true
+	)
+	@JoinColumn(name = "contact_id")
 	private List<Address> address;
 	
 	public Contact() {
+	}
+	
+	public Contact(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+
 	}
 	
 	public Contact(String firstName, String lastName, List<Address> address) {
@@ -43,7 +52,6 @@ public class Contact {
 	public Contact(String firstName, String lastName, AddressBook addressBook, List<Address> address) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.addressBook = addressBook;
 		this.address = address;
 	}
 
@@ -51,7 +59,6 @@ public class Contact {
 		this.contactId = contactId;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.addressBook = addressBook;
 		this.address = address;
 	}
 
@@ -79,13 +86,6 @@ public class Contact {
 		this.lastName = lastName;
 	}
 
-	public AddressBook getAddressBook() {
-		return addressBook;
-	}
-
-	public void setAddressBook(AddressBook addressBook) {
-		this.addressBook = addressBook;
-	}
 
 	public List<Address> getAddress() {
 		return address;
@@ -98,7 +98,7 @@ public class Contact {
 	@Override
 	public String toString() {
 		return "Contact [contactId=" + contactId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", addressBook=" + addressBook + ", address=" + address + "]";
+				+ ", address=" + address + "]";
 	}
 	
 }

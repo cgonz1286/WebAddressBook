@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,7 +26,12 @@ public class AddressBook {
 	private String name;
 	@Column(name = "date_added")
 	private LocalDate dateAdded;
-	@OneToMany(mappedBy="addressBook", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	
+	@OneToMany(
+		cascade=CascadeType.MERGE,
+		orphanRemoval = true
+	)
+	@JoinColumn(name = "address_book_id")
 	private List<Contact> contacts;
 	
 	public AddressBook() {

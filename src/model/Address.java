@@ -23,33 +23,25 @@ public class Address {
 	private String state;
 	@Column(name="zip")
 	private String zip;
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="contact_id")
-	private Contact contact;
+	
 	
 	public Address() {
 		super();
-	}
-	
-	public Address(String city, String state, String zip, Contact contact) {
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.contact = contact;
 	}
 	
 	public Address(String city, String state, String zip) {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+
 	}
 	
-	public Address(int addressId, String city, String state, String zip, Contact contact) {
+	
+	public Address(int addressId, String city, String state, String zip) {
 		this.addressId = addressId;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-		this.contact = contact;
 	}
 
 	public int getAddressId() {
@@ -84,17 +76,9 @@ public class Address {
 		this.zip = zip;
 	}
 
-	public Contact getContact() {
-		return contact;
-	}
-
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
 
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", city=" + city + ", state=" + state + ", zip=" + zip + ", contact="
-				+ contact + "]";
+		return "Address [addressId=" + addressId + ", city=" + city + ", state=" + state + ", zip=" + zip +"]";
 	}
 }
