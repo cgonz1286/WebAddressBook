@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "list_details")
+@Table(name = "contact")
 public class Contact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,9 +78,5 @@ public class Contact {
 		return "Contact [contactId=" + contactId + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
 				+ address + "]";
 	}
-	
-	
-	
-	
 
 }
