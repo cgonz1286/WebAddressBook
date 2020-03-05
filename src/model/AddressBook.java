@@ -1,15 +1,17 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,24 +25,37 @@ public class AddressBook {
 	private String name;
 	@Column(name = "date_added")
 	private LocalDate dateAdded;
-	@ManyToOne(cascade=CascadeType.PERSIST)//not sure if we will need to change this 
-	@JoinColumn(name="contact_id")
-	private Contact contact;
+	@OneToMany(mappedBy="addressBook", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<Contact> contacts;
 	
 	public AddressBook() {
 	}
 	
-	public AddressBook(String name, LocalDate dateAdded, Contact contact) {
+	public AddressBook(String name) {
 		this.name = name;
-		this.dateAdded = dateAdded;
-		this.contact = contact;
 	}
 	
-	public AddressBook(int id, String name, LocalDate dateAdded, Contact contact) {
+	public AddressBook(String name, LocalDate dateAdded) {
+		this.name = name;
+		this.dateAdded = dateAdded;
+	}
+	
+	public AddressBook(String name, List<Contact> contacts) {
+		this.name = name;
+		this.contacts = contacts;
+	}
+
+	public AddressBook(String name, LocalDate dateAdded, List<Contact> contacts) {
+		this.name = name;
+		this.dateAdded = dateAdded;
+		this.contacts = contacts;
+	}
+
+	public AddressBook(int id, String name, LocalDate dateAdded, List<Contact> contacts) {
 		this.id = id;
 		this.name = name;
 		this.dateAdded = dateAdded;
-		this.contact = contact;
+		this.contacts = contacts;
 	}
 
 	public int getId() {
@@ -50,7 +65,7 @@ public class AddressBook {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -67,14 +82,16 @@ public class AddressBook {
 		this.dateAdded = dateAdded;
 	}
 
-	public Contact getContact() {
-		return contact;
+	public List<Contact> getContacts() {
+		return contacts;
 	}
 
-	public void setContact(Contact contact) {
-		this.contact = contact;
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "AddressBook [id=" + id + ", name=" + name + ", dateAdded=" + dateAdded + ", contacts=" + contacts + "]";
+	}
 }
