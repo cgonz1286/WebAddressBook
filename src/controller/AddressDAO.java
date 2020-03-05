@@ -86,7 +86,7 @@ public class AddressDAO {
 		return found;
 	}
 
-	public void updateAddress(Address toEdit) {
+	public static void updateAddress(Address toEdit) {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
