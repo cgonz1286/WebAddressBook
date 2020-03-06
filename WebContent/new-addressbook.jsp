@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Create Address Book</title>
 </head>
 <body>
 	<form action = "addAddressBookServlet" method="post">
@@ -22,6 +22,7 @@
 		<br />
 		<input type = "submit" value="Create Address Book">
 	</form>
-	<a href = "index.html">Go Home.</a>
+	<br />
+	<a href = "index.html">Back to index</a>
 </body>
 </html>

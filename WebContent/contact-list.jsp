@@ -28,5 +28,7 @@
 		<input type = "submit" value = "delete" name="doThisToItem">
 		<input type="submit" value = "add" name = "doThisToItem">
 	</form>
+	<br />
+	<a href = "index.html">Back to index</a>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>View All Addresses</title>
 </head>
 <body>
 	<form method = "post" action = "addressNavigationServlet">
@@ -25,5 +25,7 @@
 		<input type = "submit" value = "delete" name="doThisToItem">
 		<input type="submit" value = "add" name = "doThisToItem">
 	</form>
+	<br />
+	<a href = "index.html">Back to index</a>
 </body>
 </html>

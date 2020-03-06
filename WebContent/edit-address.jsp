@@ -25,5 +25,7 @@
 		
 		<input type = "submit" value="Save Edited Address">
 	</form>
+	<br />
+	<a href = "index.html">Back to index</a>
 </body>
 </html>
