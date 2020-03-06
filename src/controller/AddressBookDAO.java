@@ -48,7 +48,7 @@ static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("
 		typedQuery.setParameter("selectedId", toDelete.getId());
 		typedQuery.setParameter("selectedName", toDelete.getName());
 		typedQuery.setParameter("selectedDateAdded", toDelete.getDateAdded());
-		typedQuery.setParameter("selectedContact", toDelete.getContact());
+		typedQuery.setParameter("selectedContact", toDelete.getContacts());
 		
 		//We only want one result
 		typedQuery.setMaxResults(1);

@@ -26,9 +26,9 @@ public class Contact {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	
 	@OneToMany(
 		cascade=CascadeType.MERGE,
+		fetch=FetchType.EAGER,
 		orphanRemoval = true
 	)
 	@JoinColumn(name = "contact_id")
