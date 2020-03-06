@@ -19,7 +19,6 @@ public class viewAllAddressesServlet extends HttpServlet {
      */
     public viewAllAddressesServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

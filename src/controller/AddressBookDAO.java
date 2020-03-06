@@ -41,14 +41,11 @@ static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("
 		em.getTransaction().begin();
 		
 		//Write query to retrieve team to delete
-		TypedQuery<AddressBook> typedQuery = em.createQuery("select ab from AddressBook ab where ab.id = :selectedId and ab.name = :selectedName " + 
-														    "and ab.dateAdded = :selectedDateAdded and ab.contact = :selectedContact", AddressBook.class);
+		TypedQuery<AddressBook> typedQuery = em.createQuery("select ab from AddressBook ab where ab.id = :selectedId", AddressBook.class);
 		
 		//Substitute parameter with actual data from the toDelete item
 		typedQuery.setParameter("selectedId", toDelete.getId());
-		typedQuery.setParameter("selectedName", toDelete.getName());
-		typedQuery.setParameter("selectedDateAdded", toDelete.getDateAdded());
-		typedQuery.setParameter("selectedContact", toDelete.getContacts());
+
 		
 		//We only want one result
 		typedQuery.setMaxResults(1);

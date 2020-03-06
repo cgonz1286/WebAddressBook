@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.AddressBook;
 import model.Contact;
 
 /**
- * Servlet implementation class viewContactsServlet
+ * Servlet implementation class ViewAllAddressBooksServlets
  */
-@WebServlet("/viewAllContactsServlet")
-public class viewAllContactsServlet extends HttpServlet {
+@WebServlet("/viewAllAddressBooksServlet")
+public class viewAllAddressBooksServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllContactsServlet() {
+    public viewAllAddressBooksServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,20 +31,19 @@ public class viewAllContactsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ContactDAO contactDAO = new ContactDAO();
+		AddressBookDAO addressBookDAO = new AddressBookDAO();
 
-		List<Contact> abc = contactDAO.showAllContacts();
-		request.setAttribute("allContacts", abc);
+		List<AddressBook> abc = addressBookDAO.showAllAddressBooks();
+		request.setAttribute("allAddressBooks", abc);
 		
-		String path = "/contact-list.jsp";
+		String path = "/addressbooks-list.jsp";
 		
 		if(abc.isEmpty()){
 			System.out.println("Nothing found");
 			path = "/index.html";
 		}
 
-		getServletContext().getRequestDispatcher(path).forward(request, response);
-
+		getServletContext().getRequestDispatcher("/addressbooks-list.jsp").forward(request, response);
 	}
 
 	/**
