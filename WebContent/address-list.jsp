@@ -17,6 +17,7 @@
 		   <td>${currentAddress.city}</td>
 		   <td>${currentAddress.state}</td>
 		   <td>${currentAddress.zip}</td>
+		   
 		   </tr>
 		</c:forEach>
 		</table>

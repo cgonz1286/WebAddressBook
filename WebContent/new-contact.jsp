@@ -9,10 +9,12 @@
 </head>
 <body>
 	<form action = "addContactServlet" method="post">
-		First Name: <input type ="text" name = "firstName"><br />
-		First Name: <input type ="text" name = "firstName"><br />
+		<label for="firstName">First Name:</label><br>
+		<input type ="text" name = "firstName"><br />
+		<label for="city">Last Name:</label><br>
+		<input type ="text" name = "lastName"><br />
 		
-		Available Address:<br />
+		<p>Available Address:</p><br />
 		
 		<select name="allAddressesToAdd" multiple size="6">
 		<c:forEach items="${requestScope.allAddresses}" var="currentAddress">

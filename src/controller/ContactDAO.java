@@ -41,14 +41,11 @@ public class ContactDAO {
 		em.getTransaction().begin();
 		
 		//Write query to retrieve team to delete
-		TypedQuery<Contact> typedQuery = em.createQuery("select c from Contact c where c.contactId = :selectedContactId and c.firstName = :selectedFirstName " + 
-														"and c.lastName = :selectedLastName and c.address = :selectedAddress", Contact.class);
+		TypedQuery<Contact> typedQuery = em.createQuery("select c from Contact c where c.contactId = :selectedContactId ", Contact.class);
 		
 		//Substitute parameter with actual data from the toDelete item
 		typedQuery.setParameter("selectedContactId", toDelete.getContactId());
-		typedQuery.setParameter("selectedFirstName", toDelete.getFirstName());
-		typedQuery.setParameter("selectedLastName", toDelete.getLastName());
-		typedQuery.setParameter("selectedAddress", toDelete.getAddress());
+		
 		
 		//We only want one result
 		typedQuery.setMaxResults(1);

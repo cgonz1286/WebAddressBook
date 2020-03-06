@@ -30,10 +30,9 @@ public class addAddressForContact extends HttpServlet {
 		
 		request.setAttribute("allAddresses", addressDAO.showAllAddresses());
 		
-		System.out.println("not");
+		
 		if(addressDAO.showAllAddresses().isEmpty()){
-			System.out.println("empty");
-				request.setAttribute("allAddresses", " ");
+				request.setAttribute("allAddresses", null);
 		}
 		
 		getServletContext().getRequestDispatcher("/new-contact.jsp").forward(request, response);
