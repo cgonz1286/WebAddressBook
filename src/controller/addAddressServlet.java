@@ -40,11 +40,13 @@ public class addAddressServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String state = request.getParameter("state");
 		String zip = request.getParameter("zip");
-		String addressName = request.getParameter("addressName");
-		if (city.isEmpty() || state.isEmpty() || zip.isEmpty() || addressName.isEmpty()) {
-			getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+		String addressType = request.getParameter("addressType");
+		
+		if (city.isEmpty() || state.isEmpty() || zip.isEmpty() || addressType.isEmpty()) {
+			System.out.println("All fields are required.");;
 		} else {
-			Address newAddress = new Address(city, state, zip, addressName);
+			Address newAddress = new Address(city, state, zip, addressType);
+			
 			AddressDAO addressDAO = new AddressDAO();
 			addressDAO.insertAddress(newAddress);
 
